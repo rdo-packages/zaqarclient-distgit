@@ -1,18 +1,18 @@
 Name:           python-zaqarclient
 Version:        0.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
 License:        ASL 2.0
 URL:            http://wiki.openstack.org/zaqar
 Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
-Patch0:         0001-Remove-runtime-dependency-on-python-pbr.patch
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 Requires:       python-jsonschema
 Requires:       python-keystoneclient
+Requires:       python-pbr
 Requires:       python-six
 Requires:       python-stevedore
 
@@ -21,10 +21,6 @@ Python client to Zaqar messaging service API v1
 
 %prep
 %setup -q
-%patch0 -p1 -b .pbr
-# remove runtime dep on PBR
-sed -i s/REDHATZAQARCLIENTVERSION/%{version}/ zaqarclient/version.py
-rm -rf {,test-}requirements.txt
 
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
@@ -43,6 +39,9 @@ rm -rf %{pypi_name}.egg-info
 %{python2_sitelib}/python_zaqarclient-%{version}-py?.?.egg-info
 
 %changelog
+* Tue Mar 31 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 0.1.0-3
+- Drop PBR patch
+
 * Mon Sep 29 2014 Haïkel Guémar <hguemar@fedoraproject.org> - 0.1.0-2
 - Drop PBR runtime dependency
 
