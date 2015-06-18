@@ -1,6 +1,6 @@
 Name:           python-zaqarclient
 Version:        0.1.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
 License:        ASL 2.0
@@ -39,6 +39,9 @@ rm -rf %{pypi_name}.egg-info
 %{python2_sitelib}/python_zaqarclient-%{version}-py?.?.egg-info
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Tue Mar 31 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 0.1.0-3
 - Drop PBR patch
 
