@@ -9,6 +9,7 @@ Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{vers
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 Requires:       python-jsonschema
 Requires:       python-keystoneclient >= 1.6.0
