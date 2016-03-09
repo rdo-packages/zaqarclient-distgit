@@ -10,6 +10,7 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
+BuildRequires:  python-setuptools
 Requires:       python-jsonschema
 Requires:       python-keystoneclient >= 1.6.0
 Requires:       python-oslo-i18n >= 1.5.0
