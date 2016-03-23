@@ -1,11 +1,12 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           python-zaqarclient
-Version:        XXX
-Release:        XXX
+Version:        1.0.0
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
 License:        ASL 2.0
 URL:            http://wiki.openstack.org/zaqar
-Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}%{?milestone}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -41,3 +42,5 @@ rm -rf %{pypi_name}.egg-info
 %{python2_sitelib}/python_zaqarclient-*-py?.?.egg-info
 
 %changelog
+* Wed Mar 23 2016 RDO <rdo-list@redhat.com> 1.0.0-0.1
+-  Rebuild for Mitaka 
