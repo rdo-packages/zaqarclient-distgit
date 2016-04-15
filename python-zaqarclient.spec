@@ -1,16 +1,17 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           python-zaqarclient
-Version:        0.2.0
-Release:        2%{?dist}
+Version:        1.0.0
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
 License:        ASL 2.0
 URL:            http://wiki.openstack.org/zaqar
-Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}%{?milestone}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
+BuildRequires:  python-setuptools
 Requires:       python-jsonschema
 Requires:       python-keystoneclient >= 1.6.0
 Requires:       python-oslo-i18n >= 1.5.0
@@ -23,7 +24,7 @@ Requires:       python-stevedore >= 1.5.0
 Python client to Zaqar messaging service API v1
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{upstream_version}
 
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
@@ -41,20 +42,5 @@ rm -rf %{pypi_name}.egg-info
 %{python2_sitelib}/python_zaqarclient-*-py?.?.egg-info
 
 %changelog
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
-
-* Tue Sep 22 2015 Haikel Guemar <hguemar@fedoraproject.org> - 0.2.0-1
-- Update to upstream 0.2.0
-
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.0-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Tue Mar 31 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 0.1.0-3
-- Drop PBR patch
-
-* Mon Sep 29 2014 Haïkel Guémar <hguemar@fedoraproject.org> - 0.1.0-2
-- Drop PBR runtime dependency
-
-* Sun Sep 28 2014 Haïkel Guémar <hguemar@fedoraproject.org> - 0.1.0-1
-- Initial package.
+* Wed Mar 23 2016 RDO <rdo-list@redhat.com> 1.0.0-0.1
+-  Rebuild for Mitaka 
