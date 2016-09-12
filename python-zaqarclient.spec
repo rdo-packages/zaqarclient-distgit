@@ -98,3 +98,4 @@ rm -rf %{pypi_name}.egg-info
 %endif
 
 %changelog
+# REMOVEME: error caused by commit 
