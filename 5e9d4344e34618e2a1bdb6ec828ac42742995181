@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_297e2eaf",
+        "filename": "python-zaqarclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2016-09-12T09:14:37Z",
+      "side": 1,
+      "message": "python3-osc-lib",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "5e9d4344e34618e2a1bdb6ec828ac42742995181",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
