@@ -12,7 +12,7 @@ Summary:        Client Library for OpenStack Zaqar Queueing API
 
 License:        ASL 2.0
 URL:            http://wiki.openstack.org/zaqar
-Source0:        https://pypi.io/packages/source/p/%{name}/%{name}-%{version}%{?milestone}.tar.gz
+Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
 
