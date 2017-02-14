@@ -6,8 +6,8 @@
 %endif
 
 Name:           python-zaqarclient
-Version:        XXX
-Release:        XXX
+Version:        1.4.0
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
 License:        ASL 2.0
@@ -102,3 +102,6 @@ rm -rf %{pypi_name}.egg-info
 %endif
 
 %changelog
+* Tue Feb 14 2017 Alfredo Moralejo <amoralej@redhat.com> 1.4.0-1
+- Update to 1.4.0
+
