@@ -5,6 +5,9 @@
 %global with_python3 1
 %endif
 
+%global common_desc \
+Python client to Zaqar messaging service API v1
+
 Name:           python-zaqarclient
 Version:        XXX
 Release:        XXX
@@ -17,7 +20,7 @@ BuildArch:      noarch
 
 
 %description
-Python client to Zaqar messaging service API v1
+%{common_desc}
 
 %package -n python2-%{sname}
 Summary:        Client Library for OpenStack Zaqar Queueing API
@@ -38,7 +41,7 @@ Requires:       python-stevedore >= 1.20.0
 %{?python_provide:%python_provide python2-%{sname}}
 
 %description -n python2-%{sname}
-Python client to Zaqar messaging service API v1
+%{common_desc}
 
 
 %if 0%{?with_python3}
@@ -61,7 +64,7 @@ Requires:       python3-stevedore >= 1.20.0
 %{?python_provide:%python_provide python2-%{sname}}
 
 %description -n python3-%{sname}
-Python client to Zaqar messaging service API v1
+%{common_desc}
 %endif
 
 %prep
