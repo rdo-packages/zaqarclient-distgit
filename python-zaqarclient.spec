@@ -9,8 +9,8 @@
 Python client to Zaqar messaging service API v1
 
 Name:           python-zaqarclient
-Version:        XXX
-Release:        XXX
+Version:        1.9.0
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
 License:        ASL 2.0
@@ -103,3 +103,6 @@ rm -rf %{pypi_name}.egg-info
 %endif
 
 %changelog
+* Sun Feb 11 2018 RDO <dev@lists.rdoproject.org> 1.9.0-1
+- Update to 1.9.0
+
