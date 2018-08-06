@@ -27,11 +27,11 @@ Summary:        Client Library for OpenStack Zaqar Queueing API
 BuildRequires:  python2-devel
 BuildRequires:  python2-pbr
 BuildRequires:  python2-setuptools
-Requires:       python2-keystoneauth1 >= 3.2.0
-Requires:       python2-osc-lib >= 1.7.0
+Requires:       python2-keystoneauth1 >= 3.4.0
+Requires:       python2-osc-lib >= 1.10.0
 Requires:       python2-oslo-i18n >= 3.15.3
-Requires:       python2-oslo-log >= 3.30.0
-Requires:       python2-oslo-utils >= 3.31.0
+Requires:       python2-oslo-log >= 3.36.0
+Requires:       python2-oslo-utils >= 3.33.0
 Requires:       python2-pbr
 Requires:       python2-requests >= 2.14.2
 Requires:       python2-six >= 1.10.0
@@ -51,11 +51,11 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 BuildRequires:  python3-setuptools
 Requires:       python3-jsonschema
-Requires:       python3-keystoneauth1 >= 3.2.0
-Requires:       python3-osc-lib >= 1.7.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo-i18n >= 3.15.3
-Requires:       python3-oslo-log >= 3.30.0
-Requires:       python3-oslo-utils >= 3.31.0
+Requires:       python3-oslo-log >= 3.36.0
+Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-pbr
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-six >= 1.10.0
