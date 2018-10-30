@@ -1,9 +1,17 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname zaqarclient
-%if 0%{?fedora}
-%global with_python3 1
-%endif
 
 %global common_desc \
 Python client to Zaqar messaging service API v1
@@ -22,50 +30,25 @@ BuildArch:      noarch
 %description
 %{common_desc}
 
-%package -n python2-%{sname}
+%package -n python%{pyver}-%{sname}
 Summary:        Client Library for OpenStack Zaqar Queueing API
-BuildRequires:  python2-devel
-BuildRequires:  python2-pbr
-BuildRequires:  python2-setuptools
-Requires:       python2-keystoneauth1 >= 3.4.0
-Requires:       python2-osc-lib >= 1.10.0
-Requires:       python2-oslo-i18n >= 3.15.3
-Requires:       python2-oslo-log >= 3.36.0
-Requires:       python2-oslo-utils >= 3.33.0
-Requires:       python2-pbr
-Requires:       python2-requests >= 2.14.2
-Requires:       python2-six >= 1.10.0
-Requires:       python2-stevedore >= 1.20.0
-Requires:       python2-jsonschema
+%{?python_provide:%python_provide python%{pyver}-%{sname}}
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python%{pyver}-setuptools
+Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
+Requires:       python%{pyver}-osc-lib >= 1.10.0
+Requires:       python%{pyver}-oslo-i18n >= 3.15.3
+Requires:       python%{pyver}-oslo-log >= 3.36.0
+Requires:       python%{pyver}-oslo-utils >= 3.33.0
+Requires:       python%{pyver}-pbr
+Requires:       python%{pyver}-requests >= 2.14.2
+Requires:       python%{pyver}-six >= 1.10.0
+Requires:       python%{pyver}-stevedore >= 1.20.0
+Requires:       python%{pyver}-jsonschema
 
-%{?python_provide:%python_provide python2-%{sname}}
-
-%description -n python2-%{sname}
+%description -n python%{pyver}-%{sname}
 %{common_desc}
-
-
-%if 0%{?with_python3}
-%package -n python3-%{sname}
-Summary:        Client Library for OpenStack Zaqar Queueing API
-BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
-Requires:       python3-jsonschema
-Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-osc-lib >= 1.10.0
-Requires:       python3-oslo-i18n >= 3.15.3
-Requires:       python3-oslo-log >= 3.36.0
-Requires:       python3-oslo-utils >= 3.33.0
-Requires:       python3-pbr
-Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
-Requires:       python3-stevedore >= 1.20.0
-
-%{?python_provide:%python_provide python2-%{sname}}
-
-%description -n python3-%{sname}
-%{common_desc}
-%endif
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
@@ -74,32 +57,16 @@ Requires:       python3-stevedore >= 1.20.0
 rm -rf %{pypi_name}.egg-info
 
 %build
-%py2_build
-%if 0%{?with_python3}
-%py3_build
-%endif
-
+%{pyver_build}
 
 %install
-%if 0%{?with_python3}
-%py3_install
-%endif
-
-%py2_install
+%{pyver_install}
 
 
-%files -n python2-%{sname}
+%files -n python%{pyver}-%{sname}
 %doc README.rst ChangeLog examples
 %license LICENSE
-%{python2_sitelib}/zaqarclient
-%{python2_sitelib}/python_zaqarclient-*-py?.?.egg-info
-
-%if 0%{?with_python3}
-%files -n python3-%{sname}
-%doc README.rst ChangeLog examples
-%license LICENSE
-%{python3_sitelib}/zaqarclient
-%{python3_sitelib}/python_zaqarclient-*-py?.?.egg-info
-%endif
+%{pyver_sitelib}/zaqarclient
+%{pyver_sitelib}/python_zaqarclient-*-py?.?.egg-info
 
 %changelog
