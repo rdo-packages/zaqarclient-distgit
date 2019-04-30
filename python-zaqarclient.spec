@@ -6,7 +6,7 @@
 %endif
 
 Name:           python-zaqarclient
-Version:        1.7.0
+Version:        1.7.1
 Release:        1%{?dist}
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
@@ -100,6 +100,9 @@ rm -rf %{pypi_name}.egg-info
 %endif
 
 %changelog
+* Tue Apr 30 2019 RDO <dev@lists.rdoproject.org> 1.7.1-1
+- Update to 1.7.1
+
 * Mon Aug 14 2017 Alfredo Moralejo <amoralej@redhat.com> 1.7.0-1
 - Update to 1.7.0
 
