@@ -70,3 +70,4 @@ rm -rf %{pypi_name}.egg-info
 %{pyver_sitelib}/python_zaqarclient-*-py?.?.egg-info
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-zaqarclient/commit/?id=9038bf6ba93c24c9a61447dfcb14e436f1267066
