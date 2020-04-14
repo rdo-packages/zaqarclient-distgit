@@ -37,7 +37,7 @@ BuildRequires:  python%{pyver}-devel
 BuildRequires:  python%{pyver}-pbr
 BuildRequires:  python%{pyver}-setuptools
 Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
-Requires:       python%{pyver}-osc-lib >= 1.10.0
+Requires:       python%{pyver}-osc-lib >= 1.8.0
 Requires:       python%{pyver}-oslo-i18n >= 3.15.3
 Requires:       python%{pyver}-oslo-log >= 3.36.0
 Requires:       python%{pyver}-oslo-utils >= 3.33.0
