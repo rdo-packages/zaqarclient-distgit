@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname zaqarclient
@@ -30,24 +19,24 @@ BuildArch:      noarch
 %description
 %{common_desc}
 
-%package -n python%{pyver}-%{sname}
+%package -n python3-%{sname}
 Summary:        Client Library for OpenStack Zaqar Queueing API
-%{?python_provide:%python_provide python%{pyver}-%{sname}}
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-pbr
-BuildRequires:  python%{pyver}-setuptools
-Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
-Requires:       python%{pyver}-osc-lib >= 1.8.0
-Requires:       python%{pyver}-oslo-i18n >= 3.15.3
-Requires:       python%{pyver}-oslo-log >= 3.36.0
-Requires:       python%{pyver}-oslo-utils >= 3.33.0
-Requires:       python%{pyver}-pbr
-Requires:       python%{pyver}-requests >= 2.14.2
-Requires:       python%{pyver}-six >= 1.10.0
-Requires:       python%{pyver}-stevedore >= 1.20.0
-Requires:       python%{pyver}-jsonschema
+%{?python_provide:%python_provide python3-%{sname}}
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr
+BuildRequires:  python3-setuptools
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-log >= 3.36.0
+Requires:       python3-oslo-utils >= 3.33.0
+Requires:       python3-pbr
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+Requires:       python3-jsonschema
 
-%description -n python%{pyver}-%{sname}
+%description -n python3-%{sname}
 %{common_desc}
 
 %prep
@@ -57,16 +46,16 @@ Requires:       python%{pyver}-jsonschema
 rm -rf %{pypi_name}.egg-info
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %install
-%{pyver_install}
+%{py3_install}
 
 
-%files -n python%{pyver}-%{sname}
+%files -n python3-%{sname}
 %doc README.rst ChangeLog examples
 %license LICENSE
-%{pyver_sitelib}/zaqarclient
-%{pyver_sitelib}/python_zaqarclient-*-py?.?.egg-info
+%{python3_sitelib}/zaqarclient
+%{python3_sitelib}/python_zaqarclient-*-py?.?.egg-info
 
 %changelog
