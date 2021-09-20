@@ -79,3 +79,4 @@ rm -rf %{pypi_name}.egg-info
 * Mon Sep 20 2021 RDO <dev@lists.rdoproject.org> 2.2.0-1
 - Update to 2.2.0
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/python-zaqarclient/commit/e388947aae2c1440ffc8c635d9dc2f702dc2cb27
