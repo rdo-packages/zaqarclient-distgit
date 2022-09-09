@@ -1,9 +1,9 @@
 # UUID Group Name
 global:Registered-Users	Registered Users
-ec2eac977a3105c77b82446b2b42c6d1d40824f9	openstack/zaqarclient-ptl
 6ddfecad023c6f4fa3ac8c4d2583c502ea675a73	Service Users
-4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
 f7076bdf95ea9c5b19f7580c9fd0621470488a9d	openstack/zaqarclient-core
-05a678d3d4a168e149d5e8a0063bbd1b1c5526da	Administrators
 global:Anonymous-Users	Anonymous Users
+05a678d3d4a168e149d5e8a0063bbd1b1c5526da	Administrators
+ec2eac977a3105c77b82446b2b42c6d1d40824f9	openstack/zaqarclient-ptl
+4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
 401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
