@@ -1,6 +1,8 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx openstackdocstheme
 
 %global sname zaqarclient
 
@@ -12,7 +14,7 @@ Version:        XXX
 Release:        XXX
 Summary:        Client Library for OpenStack Zaqar Queueing API
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            http://wiki.openstack.org/zaqar
 Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 # Required for tarball sources verification
@@ -34,20 +36,8 @@ BuildRequires:  openstack-macros
 
 %package -n python3-%{sname}
 Summary:        Client Library for OpenStack Zaqar Queueing API
-%{?python_provide:%python_provide python3-%{sname}}
 BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
-Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-osc-lib >= 1.8.0
-Requires:       python3-oslo-i18n >= 3.15.3
-Requires:       python3-oslo-log >= 3.36.0
-Requires:       python3-oslo-utils >= 3.33.0
-Requires:       python3-pbr
-Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
-Requires:       python3-stevedore >= 1.20.0
-Requires:       python3-jsonschema
+BuildRequires:  pyproject-rpm-macros
 
 %description -n python3-%{sname}
 %{common_desc}
@@ -59,20 +49,35 @@ Requires:       python3-jsonschema
 %endif
 %setup -q -n %{name}-%{upstream_version}
 
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
 
 
 %files -n python3-%{sname}
 %doc README.rst ChangeLog examples
 %license LICENSE
 %{python3_sitelib}/zaqarclient
-%{python3_sitelib}/python_zaqarclient-*-py%{python3_version}.egg-info
+%{python3_sitelib}/python_zaqarclient-*.dist-info
 
 %changelog
