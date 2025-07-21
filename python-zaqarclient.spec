@@ -83,3 +83,4 @@ done
 %{python3_sitelib}/python_zaqarclient-*.dist-info
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/python-zaqarclient/commit/0bcede335b7a6673c2f2c9ba75c59933080438c7
